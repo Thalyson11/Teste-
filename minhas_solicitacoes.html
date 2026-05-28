@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Minhas Solicitações</title>
+
+  <link rel="stylesheet" href="../public/css/minhas_solicitacoes.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div>
+
+        <h2 class="l">SupportDesk</h2>
+
+        <div class="logo-area">
+
+          <div class="logo-icon">
+            👤
+          </div>
+
+          <div>
+            <h2>Solicitante</h2>
+            <p>Painel de Solicitações</p>
+          </div>
+
+        </div>
+
+        <nav class="menu">
+
+          <a href="#" class="active">
+            📋 Minhas Solicitações
+          </a>
+
+          <a href="#" onclick="carregarSolicitantes('solicitante','solicitanteAdd'), abrirModalAdicionar()">
+            ➕ Nova Solicitação
+          </a>
+
+          <a href="index.html">
+            🚪 Logout
+          </a>
+
+        </nav>
+
+      </div>
+
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <main class="main-content">
+
+      <!-- HEADER -->
+      <section class="top-header">
+
+        <div>
+
+          <span class="page-tag">
+            CENTRAL DO SOLICITANTE
+          </span>
+
+          <h1>
+            Minhas Solicitações
+          </h1>
+
+          <p>
+            Acompanhe o andamento das suas solicitações de manutenção em tempo real.
+          </p>
+
+        </div>
+
+        <button class="primary-button"
+          onclick="carregarSolicitantes('solicitante','solicitanteAdd'), abrirModalAdicionar()">
+          + Nova Solicitação
+        </button>
+
+      </section>
+
+      <!-- CARDS -->
+      <section class="stats-grid">
+
+        <div class="stat-card">
+          <span>Total de Solicitações</span>
+          <h2 id="totalSolicitacoes">0</h2>
+        </div>
+
+        <div class="stat-card">
+          <span>Em Andamento</span>
+          <h2 id="totalAndamento">0</h2>
+        </div>
+
+        <div class="stat-card">
+          <span>Concluídas</span>
+          <h2 id="totalConcluidas">0</h2>
+        </div>
+
+        <div class="stat-card">
+          <span>Prioridade Alta</span>
+          <h2 id="totalAlta">0</h2>
+        </div>
+
+      </section>
+
+      <!-- CARD PRINCIPAL -->
+      <section class="content-card">
+
+        <div class="toolbar">
+
+          <div class="toolbar-left">
+
+            <h3>
+              Histórico de Solicitações
+            </h3>
+
+            <p>
+              Visualize todas as solicitações registradas.
+            </p>
+
+          </div>
+
+          <div class="toolbar-right">
+
+            <button class="secondary-button" onclick="buscar()">
+              Atualizar Lista
+            </button>
+
+          </div>
+
+        </div>
+
+        <!-- LISTAGEM -->
+        <div id="content" class="loading">
+
+          Clique em "Atualizar Lista" para carregar suas solicitações.
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal" id="modalAdicionar">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h2>Nova Solicitação</h2>
+
+        <p>
+          Preencha os dados da manutenção.
+        </p>
+
+      </div>
+      <form id="formSolicitacao">
+
+
+        <div class="form-group">
+
+          <label>Solicitante</label>
+
+          <div class="select-wrapper">
+
+            <select id="solicitanteAdd" required class="custom-select">
+              <option value="">Selecione</option>
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Tipo de Manutenção</label>
+
+          <div class="select-wrapper">
+
+            <select id="tipoAdd" required class="custom-select">
+
+              <option value="">Selecione</option>
+              <option value="predial">Predial</option>
+              <option value="equipamento">Equipamento</option>
+              <option value="ti">TI</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Descrição do Problema</label>
+
+          <textarea id="descricaoAdd" placeholder="Descreva o problema detalhadamente..." required></textarea>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Prioridade</label>
+
+          <div class="select-wrapper">
+
+            <select id="prioridadeAdd" required class="custom-select">
+
+              <option value="">Selecione</option>
+              <option value="baixa">Baixa</option>
+              <option value="media">Média</option>
+              <option value="alta">Alta</option>
+              <option value="critica">Crítica</option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <label>Status</label>
+
+          <div class="select-wrapper">
+
+            <select id="statusAdd" required class="custom-select" disabled>
+
+              <option value="aberta" selected>
+                Aberta
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+        <div class="modal-buttons">
+
+          <button type="button" class="cancel-button" onclick="fecharModal('modalAdicionar')">
+            Cancelar
+          </button>
+
+          <button type="button" onclick="validarFormulario()">
+            Salvar Solicitação
+          </button>
+
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <footer id="rodape-usuario"></footer>
+
+  <script src="../public/js/minhas_solicitacoes.js"></script>
+
+</body>
+
+</html>

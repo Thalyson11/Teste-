@@ -1,0 +1,280 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f7fb;
+    color: #1e293b;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 250px;
+    background: #1e3a8a;
+    padding: 30px 20px;
+    color: white;
+}
+
+.logo h2 {
+    margin-bottom: 40px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar nav a {
+    color: #dbeafe;
+    text-decoration: none;
+    padding: 14px;
+    border-radius: 10px;
+    transition: 0.25s;
+}
+
+.sidebar nav a:hover,
+.sidebar nav a.active {
+    background: rgba(255,255,255,0.15);
+}
+
+/* CONTEÚDO */
+.content {
+    flex: 1;
+    padding: 35px;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-header h1 {
+    color: #1e3a8a;
+}
+
+.page-header p {
+    color: #64748b;
+}
+
+.header-actions {
+    display: flex;
+    gap: 12px;
+}
+
+/* BOTÕES */
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+/* TABELA */
+.table-card {
+    background: white;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: #eff6ff;
+}
+
+th, td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    word-break: break-word;
+}
+
+th {
+    color: #1e3a8a;
+}
+
+tbody tr:hover {
+    background: #f8fafc;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 28px;
+    width: 400px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+input,
+select {
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filtro-container {
+    position: relative;
+}
+
+.filtro-menu {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    padding: 10px;
+}
+
+.filtro-menu button {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+/* RODAPÉ */
+.usuario-box {
+    position: fixed;
+    bottom: 0;
+    left: 260px;
+    width: calc(100% - 260px);
+    background: white;
+    border-top: 1px solid #e6ebf2;
+    padding: 14px 24px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    color: #475569;
+    font-size: 14px;
+}
+.descricao-box {
+    min-height: 120px;
+    resize: vertical;
+    padding: 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #1e293b;
+    background: #f8fafc;
+    transition: 0.25s;
+}
+
+.descricao-box:focus {
+    outline: none;
+    border-color: #2563eb;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.descricao-box::placeholder {
+    color: #94a3b8;
+}
+
+
+/*Aqui*/
+
+.btn-olho{
+    background: #2563eb;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+.btn-olho:hover{
+    background: #1d4ed8;
+    transform: scale(1.05);
+}
+
+.modal-solucao{
+    max-width: 500px;
+}
+
+.solucao-info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.box-solucao,
+.box-data{
+    background: #f3f4f6;
+    border-radius: 10px;
+    padding: 14px;
+    min-height: 50px;
+    color: #111827;
+    line-height: 1.5;
+    word-break: break-word;
+}
+.btn-olho-desabilitado{
+    background: #dbd1d1;
+    border: none;
+    color: #806e6b;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: not-allowed;
+    font-size: 18px;
+}
+
+.acoes {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.acoes button {
+    padding: 10px 14px;
+    font-size: 13px;
+}

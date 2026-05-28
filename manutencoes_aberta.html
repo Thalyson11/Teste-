@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manutenções em Aberto</title>
+
+    <link rel="stylesheet" href="../public/css/manutencoes_aberta.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <aside class="sidebar">
+
+            <div>
+
+                <h2 class="l">SupportDesk</h2>
+
+                <div class="logo-area">
+
+                    <div class="logo-icon">
+                        🛠
+                    </div>
+
+                    <div>
+                        <h2>Técnico</h2>
+                        <p>Painel do Técnico</p>
+                    </div>
+
+                </div>
+
+                <nav class="menu">
+
+                    <a href="#" class="active">
+                        🛠 Manutenções
+                    </a>
+
+                    <a href="#">
+                        📋 Relatórios
+                    </a>
+
+                    <a href="index.html">
+                        🚪 Logout
+                    </a>
+
+                </nav>
+
+            </div>
+
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="content">
+
+            <!-- HEADER -->
+            <section class="page-header">
+
+                <div class="header-text">
+
+                    <h1>
+                        Central do Técnico
+                    </h1>
+
+                    <p>
+                        Gerencie ordens de serviço e acompanhe atividades técnicas em andamento.
+                    </p>
+
+                </div>
+
+            </section>
+
+            <!-- MÉTRICAS -->
+            <section class="metrics-grid">
+
+                <div class="metric-card">
+                    <span>Ordens em Aberto</span>
+                    <h2 id="totalAbertas">0</h2>
+                </div>
+
+                <div class="metric-card">
+                    <span>Minhas Manutenções</span>
+                    <h2 id="totalMinhas">0</h2>
+                </div>
+
+                <div class="metric-card">
+                    <span>Prioridade Alta</span>
+                    <h2 id="totalAlta">0</h2>
+                </div>
+
+                <div class="metric-card">
+                    <span>Concluídas Hoje</span>
+                    <h2 id="totalConcluidas">0</h2>
+                </div>
+
+            </section>
+
+            <!-- CARD PRINCIPAL -->
+            <section class="main-card">
+
+                <div class="toolbar">
+
+                    <div class="toolbar-left">
+                        <input type="text" placeholder="Buscar manutenção...">
+                    </div>
+
+                    <div class="toolbar-right">
+
+                        <button class="secondary-button" onclick="buscar()">
+                            Todas em Aberto
+                        </button>
+
+                        <button onclick="minhas_manutencoes()">
+                            Minhas Manutenções
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div id="content" class="content-area loading">
+                    Clique em uma das opções acima para carregar as manutenções.
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+  <!-- MODAL -->
+<div id="modalEncerrar" class="modal-overlay">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2>Concluir Chamado</h2>
+
+            <button
+                class="close-btn"
+                onclick="fecharModalChamado()">
+                ✕
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <label>Solução aplicada</label>
+
+            <textarea
+                id="solucao"
+                placeholder="Digite a solução..."
+            ></textarea>
+
+            <div class="contador">
+                <span id="contadorCaracteres">0</span>/500
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+
+            <button
+                class="btn-cancelar"
+                onclick="fecharModalChamado()">
+                Cancelar
+            </button>
+
+            <button
+                class="btn-confirmar"
+                onclick="encerrarChamado()">
+                Finalizar chamado
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+    <footer id="rodape-usuario"></footer>
+
+    <script src="../public/js/manutencoes_aberta.js"></script>
+
+</body>
+
+</html>
